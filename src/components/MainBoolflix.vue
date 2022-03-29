@@ -3,7 +3,7 @@
 
             <div v-for='element in searchMovie' :key='element.title' class="p-relative">
                 <div class="box">
-                    <img src="https://image.tmdb.org/t/p/w500/1k6iwC4KaPvTBt1JuaqXy3noZRY.jpg" alt="">
+                    <img src="image + element.poster_path" alt="">
                   <div>Titolo: {{ element.title }}</div>
                   <div>Titolo originale: {{ element.original_title }}</div>
                   <div>Voto: {{ element.vote_average }}</div>
@@ -24,10 +24,11 @@ export default {
   },
   methods: {
     image () {
-      const result = '(https://image.tmdb.org/t/p/w500) + (this.searchMovie.poster_path)'
-      console.log(result)
+      const result = 'https://image.tmdb.org/t/p/w500'
       return result
     }
+  },
+  computed: {
   }
 }
 </script>
