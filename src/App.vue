@@ -16,10 +16,18 @@ export default {
     HeaderBoolflix,
     MainBoolflix
   },
+  data () {
+    return {
+      movie: null
+    }
+  },
   created () {
     axios.get(
-      'https://api.themoviedb.org/3/movie/550?api_key=58d440feb39fe720c632f6aaec3cb1f1')
-      .then()
+      'https://api.themoviedb.org/3/movie/550?api_key=58d440feb39fe720c632f6aaec3cb1f1&language=it&query=movie')
+      .then((response) => {
+        this.movie = response.data.title
+        console.log(this.movie)
+      })
   }
 }
 </script>
