@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <header-boolflix />
+    <header-boolflix @search='searchInput'/>
     <main-boolflix :search-movie="movie"/>
   </div>
 </template>
@@ -26,8 +26,13 @@ export default {
       'https://api.themoviedb.org/3/search/movie?api_key=58d440feb39fe720c632f6aaec3cb1f1&language=it&query=movie')
       .then((response) => {
         this.movie = response.data.results
-        console.log(this.movie)
       })
+  },
+  methods: {
+    searchInput (event) {
+      this.movie = event
+      console.log(this.movie)
+    }
   }
 }
 </script>

@@ -2,7 +2,7 @@
   <header>
       <h1>boolflix</h1>
       <div>
-          <input type="text" placeholder="Digita qui" v-model='search'>
+          <input type="text" placeholder="Digita qui" v-model='search' @keyup="$emit('pass-movie', search)">
           <button>Cerca</button>
       </div>
   </header>
