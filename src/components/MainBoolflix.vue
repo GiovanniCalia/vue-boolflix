@@ -1,11 +1,16 @@
 <template>
   <main>
-      <div class="box"></div>
+      <div class="box" v-for='element in searchMovie' :key='element'>
+          <div>{{ element.title }}</div>
+      </div>
   </main>
 </template>
 
 <script>
 export default {
+  props: {
+    searchMovie: String
+  }
 
 }
 </script>
@@ -22,8 +27,8 @@ main{
 
 .box{
     margin: 1rem;
-    width: 400px;
-    height: 500px;
+    width: 300px;
+    height: 400px;
     background-color: red;
 }
 </style>

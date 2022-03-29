@@ -1,7 +1,10 @@
 <template>
   <header>
       <h1>boolflix</h1>
-      <input type="text" placeholder="digita qui">
+      <div>
+          <input type="text" placeholder="digita qui">
+          <button>Cerca</button>
+      </div>
   </header>
 </template>
 
@@ -29,5 +32,9 @@ input{
     padding: 0.5rem;
     width: 200px;
 }
+ button{
+     padding: 0.5rem;
+     background-color: red;
+ }
 
 </style>

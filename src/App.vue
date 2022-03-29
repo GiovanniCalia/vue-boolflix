@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <header-boolflix />
-    <main-boolflix />
+    <main-boolflix :search-movie="movie"/>
   </div>
 </template>
 
@@ -18,14 +18,14 @@ export default {
   },
   data () {
     return {
-      movie: null
+      movie: ''
     }
   },
   created () {
     axios.get(
-      'https://api.themoviedb.org/3/movie/550?api_key=58d440feb39fe720c632f6aaec3cb1f1&language=it&query=movie')
+      'https://api.themoviedb.org/3/search/movie?api_key=58d440feb39fe720c632f6aaec3cb1f1&language=it&query=movie')
       .then((response) => {
-        this.movie = response.data.title
+        this.movie = response.data.results
         console.log(this.movie)
       })
   }
