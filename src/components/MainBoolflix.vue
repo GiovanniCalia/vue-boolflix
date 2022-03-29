@@ -1,9 +1,6 @@
 <template>
   <main>
       <div class="box"></div>
-      <div class="box"></div>
-      <div class="box"></div>
-      <div class="box"></div>
   </main>
 </template>
 
