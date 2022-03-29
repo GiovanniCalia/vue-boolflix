@@ -3,15 +3,14 @@
 
             <div v-for='element in searchMovie' :key='element.title' class="p-relative">
                 <div class="box">
-                    <img src="image + element.poster_path" alt="">
                   <div>Titolo: {{ element.title }}</div>
                   <div>Titolo originale: {{ element.original_title }}</div>
+                  <div>Language: {{ element.original_language }}</div>
                   <div>Voto: {{ element.vote_average }}</div>
-                  <div>Overview: {{ element.overview }}</div>
                 </div>
-                <!--<div class="box-img">
-                    <img src="https://image.tmdb.org/t/p/w500/1k6iwC4KaPvTBt1JuaqXy3noZRY.jpg" alt="">
-                </div>-->
+                <div class="box-img">
+                    <img :src="image(element.poster_path)" :alt="element.title">
+                </div>
             </div>
 
   </main>
@@ -19,16 +18,23 @@
 
 <script>
 export default {
+  data () {
+    return {
+      search: []
+    }
+  },
   props: {
     searchMovie: Array
   },
   methods: {
-    image () {
-      const result = 'https://image.tmdb.org/t/p/w500'
-      return result
+    image (result) {
+      return 'https://image.tmdb.org/t/p/w500' + result
     }
   },
   computed: {
+    filterTitle () {
+      return this.search.filter(element => element.title === this.searchMovie)
+    }
   }
 }
 </script>
@@ -49,7 +55,6 @@ main{
     width: 300px;
     height: 400px;
     background-color: red;
-    overflow-y: auto;
 
     div{
         margin-bottom: 0.5rem;
@@ -71,6 +76,7 @@ main{
     background-color: blue;
     position: absolute;
     top: 0;
+    display: block;
 
     &:hover{
         display: none;

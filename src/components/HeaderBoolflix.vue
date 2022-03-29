@@ -12,10 +12,11 @@
 export default {
   data () {
     return {
-      search: ''
+      search: []
     }
   }
 }
+
 </script>
 
 <style scoped lang="scss">
