@@ -1,18 +1,16 @@
 <template>
   <main>
-
-            <div v-for='element in searchMovie' :key='element.title' class="p-relative">
-                <div class="box">
-                  <div>Titolo: {{ element.title }}</div>
-                  <div>Titolo originale: {{ element.original_title }}</div>
-                  <div>Language: {{ element.original_language }}</div>
-                  <div>Voto: {{ element.vote_average }}</div>
-                </div>
-                <div class="box-img">
-                    <img :src="image(element.poster_path)" :alt="element.title">
-                </div>
+        <div v-for='element in filterTitle' :key='element.title' class="p-relative">
+            <div class="box">
+                <div>Titolo: {{ element.title }}</div>
+                <div>Titolo originale: {{ element.original_title }}</div>
+                <div>Language: {{ element.original_language }}</div>
+                <div>Voto: {{ element.vote_average }}</div>
             </div>
-
+            <div class="box-img">
+                <img :src="image(element.poster_path)" :alt="element.title">
+            </div>
+        </div>
   </main>
 </template>
 
@@ -24,7 +22,8 @@ export default {
     }
   },
   props: {
-    searchMovie: Array
+    searchMovie: Array,
+    foundMovie: String
   },
   methods: {
     image (result) {
@@ -33,7 +32,7 @@ export default {
   },
   computed: {
     filterTitle () {
-      return this.search.filter(element => element.title === this.searchMovie)
+      return this.searchMovie.filter(element => element.title.toLowerCase().includes(this.foundMovie.toLowerCase()))
     }
   }
 }
@@ -76,7 +75,6 @@ main{
     background-color: blue;
     position: absolute;
     top: 0;
-    display: block;
 
     &:hover{
         display: none;

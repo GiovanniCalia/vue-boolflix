@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <header-boolflix @search='searchInput'/>
-    <main-boolflix :search-movie="movie"/>
+    <main-boolflix :search-movie="movie" :found-movie="scMovie"/>
   </div>
 </template>
 
@@ -18,7 +18,8 @@ export default {
   },
   data () {
     return {
-      movie: []
+      movie: [],
+      scMovie: ''
     }
   },
   created () {
@@ -31,8 +32,7 @@ export default {
   },
   methods: {
     searchInput (event) {
-      this.movie = event
-      console.log(this.movie)
+      this.scMovie = event
     }
   }
 }
