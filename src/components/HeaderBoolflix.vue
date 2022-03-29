@@ -2,7 +2,7 @@
   <header>
       <h1>boolflix</h1>
       <div>
-          <input type="text" placeholder="digita qui">
+          <input type="text" placeholder="Digita qui" v-model='search'>
           <button>Cerca</button>
       </div>
   </header>
@@ -10,7 +10,11 @@
 
 <script>
 export default {
-
+  data () {
+    return {
+      search: ''
+    }
+  }
 }
 </script>
 
