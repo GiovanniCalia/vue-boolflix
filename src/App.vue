@@ -31,8 +31,13 @@ export default {
       })
   },
   methods: {
-    searchInput (event) {
-      this.scMovie = event
+    searchInput (search) {
+      axios.get(
+        'https://api.themoviedb.org/3/search/movie?api_key=58d440feb39fe720c632f6aaec3cb1f1&language=it&query=search')
+        .then(() => {
+          this.scMovie = search
+          console.log(search)
+        })
     }
   }
 }
