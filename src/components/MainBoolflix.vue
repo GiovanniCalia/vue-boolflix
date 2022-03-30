@@ -18,11 +18,13 @@
 export default {
   data () {
     return {
-      arrMovie: []
+      arrMovie: [],
+      arrTv: []
     }
   },
   props: {
     searchMovie: Array,
+    scTv: Array,
     foundMovie: String
   },
   methods: {
@@ -33,9 +35,9 @@ export default {
   computed: {
     filterTitle () {
       if (this.foundMovie === '') {
-        return this.arrMovie === this.searchMovie
+        return this.arrMovie === this.searchMovie && this.arrTv === this.scTv
       } else {
-        return this.searchMovie.filter(element => element.title.toLowerCase().includes(this.foundMovie.toLowerCase()))
+        return this.searchMovie.filter(element => element.title.toLowerCase().includes(this.foundMovie.toLowerCase())) && this.scTv.filter(element => element.name.toLowerCase().includes(this.foundMovie.toLowerCase()))
       }
     }
   }
@@ -51,28 +53,23 @@ main{
     display: flex;
     flex-wrap: wrap;
 }
-
 .box{
     margin: 1rem;
     padding: 1rem;
     width: 300px;
     height: 400px;
     background-color: red;
-
     div{
         margin-bottom: 0.5rem;
     }
-
     img{
         width: 100%;
     }
 }
-
 .p-relative{
     position: relative;
-    margin: auto;
+    margin-left: 0.5rem;
 }
-
 .box-img{
     margin: 1rem;
     width: 300px;
@@ -80,15 +77,12 @@ main{
     background-color: blue;
     position: absolute;
     top: 0;
-
     &:hover{
         display: none;
     }
-
     img{
         width: 100%;
         height: 100%;
     }
 }
-
 </style>
