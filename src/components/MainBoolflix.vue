@@ -16,6 +16,11 @@
 
 <script>
 export default {
+  data () {
+    return {
+      arrMovie: []
+    }
+  },
   props: {
     searchMovie: Array,
     foundMovie: String
@@ -27,7 +32,11 @@ export default {
   },
   computed: {
     filterTitle () {
-      return this.searchMovie.filter(element => element.title.toLowerCase().includes(this.foundMovie.toLowerCase()))
+      if (this.foundMovie === '') {
+        return this.arrMovie === this.searchMovie
+      } else {
+        return this.searchMovie.filter(element => element.title.toLowerCase().includes(this.foundMovie.toLowerCase()))
+      }
     }
   }
 }
