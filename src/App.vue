@@ -28,12 +28,14 @@ export default {
       .then((response) => {
         this.movie = response.data.results
         console.log(this.movie)
+        console.log('https://api.themoviedb.org/3/search/movie?api_key=58d440feb39fe720c632f6aaec3cb1f1&language=it&query=movie')
+        console.log('https://api.themoviedb.org')
       })
   },
   methods: {
     searchInput (search) {
       axios.get(
-        'https://api.themoviedb.org/3/search/movie?api_key=58d440feb39fe720c632f6aaec3cb1f1&language=it&query=search')
+        'https://api.themoviedb.org/3/search/movie?api_key=58d440feb39fe720c632f6aaec3cb1f1&language=it&query=' + search)
         .then(() => {
           this.scMovie = search
           console.log(search)
