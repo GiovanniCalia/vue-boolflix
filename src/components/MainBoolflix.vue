@@ -16,11 +16,6 @@
 
 <script>
 export default {
-  data () {
-    return {
-      search: []
-    }
-  },
   props: {
     searchMovie: Array,
     foundMovie: String
@@ -66,6 +61,7 @@ main{
 
 .p-relative{
     position: relative;
+    margin: auto;
 }
 
 .box-img{
