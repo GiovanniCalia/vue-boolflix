@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <header-boolflix @search='searchInput'/>
+    <header-boolflix @pass-movie='searchInput'/>
     <main-boolflix :search-movie="movie" :found-movie="scMovie"/>
   </div>
 </template>

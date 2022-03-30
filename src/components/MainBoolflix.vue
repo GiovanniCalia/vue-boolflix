@@ -1,6 +1,6 @@
 <template>
   <main>
-        <div v-for='element in filterTitle' :key='element.title' class="p-relative">
+        <div v-for='element in filterTitle' :key='element.id' class="p-relative">
             <div class="box">
                 <div>Titolo: {{ element.title }}</div>
                 <div>Titolo originale: {{ element.original_title }}</div>
