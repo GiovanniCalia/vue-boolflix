@@ -6,7 +6,11 @@
                 <div>Titolo originale: {{ element.original_title }}</div>
                 <!--<div>Language: {{ element.original_language }}</div>-->
                 <lang-flag :iso="element.original_language" :squared="false"/>
-                <div>Voto: {{ element.vote_average }}</div>
+                <div>Voto: {{ element.vote_average }}
+                  <span v-for='index in 5' :key='index'>
+                    <font-awesome-icon icon="fa-star starSolid"/>
+                  </span>
+                </div>
             </div>
             <div class="box-img">
                 <img :src="image(element.poster_path)" :alt="element.title">
