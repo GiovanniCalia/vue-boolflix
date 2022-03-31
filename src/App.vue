@@ -22,7 +22,7 @@ export default {
       scMovie: '',
       scrTv: ''
     }
-  },
+  }, /*
   created () {
     axios.get(
       'https://api.themoviedb.org/3/search/movie?api_key=58d440feb39fe720c632f6aaec3cb1f1&language=it&query=movie')
@@ -36,18 +36,20 @@ export default {
         this.tv = response.data.results
         console.log(this.tv)
       })
-  },
+}, */
   methods: {
     searchInput (search) {
       axios.get(
         'https://api.themoviedb.org/3/search/movie?api_key=58d440feb39fe720c632f6aaec3cb1f1&language=it&query=' + search)
-        .then(() => {
+        .then((response) => {
+          this.movie = response.data.results
           this.scMovie = search
           console.log(search)
         })
       axios.get(
         'https://api.themoviedb.org/3/search/tv?api_key=58d440feb39fe720c632f6aaec3cb1f1&language=it&query=' + search)
-        .then(() => {
+        .then((response) => {
+          this.tv = response.data.results
           this.scrTV = search
         })
     }

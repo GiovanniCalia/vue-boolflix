@@ -75,7 +75,8 @@ main{
 }
 .p-relative{
     position: relative;
-    margin-left: 0.5rem;
+    margin-left: 0.3rem;
+    margin-right: 0.3rem;
 }
 .box-img{
     margin: 1rem;
