@@ -7,10 +7,7 @@
                 <div>Og language:
                    <lang-flag :iso="element.original_language" :squared="false"/>
                 </div>
-                <div>
-                  <span> Voto: {{ element.vote_average }}</span>
-                    <font-awesome-icon v-for='index in 5' :key='index' icon="fa-star starSolid"/>
-                </div>
+                <div>Voto: {{ vote(element.vote_average) }}</div>
                 <div>Overview: {{ element.overview }}</div>
             </div>
             <div class="box-img">
@@ -47,8 +44,8 @@ export default {
         return 'https://image.tmdb.org/t/p/w500' + result
       }
     },
-    rating (media) {
-      return media * 0.5
+    vote (voto) {
+      return Math.ceil(voto) * 0.5
     }
   },
   computed: {
@@ -80,6 +77,7 @@ main{
     height: 400px;
     background-color: black;
     overflow-y: auto;
+    border: 4px solid grey;
 
     div{
         margin-bottom: 0.5rem;
@@ -97,7 +95,7 @@ main{
     margin: 1rem;
     width: 300px;
     height: 400px;
-    background-color: blue;
+    border: 4px solid grey;
     position: absolute;
     top: 0;
     &:hover{
