@@ -9,7 +9,7 @@
                 <div>Voto: {{ element.vote_average }}</div>
             </div>
             <div class="box-img">
-              <img :src="image(element.poster_path)" :alt="element.title">
+                <img :src="image(element.poster_path)" :alt="element.title">
             </div>
         </div>
   </main>
@@ -36,7 +36,11 @@ export default {
   },
   methods: {
     image (result) {
-      return 'https://image.tmdb.org/t/p/w500' + result
+      if (result === null) {
+        return 'https://picsum.photos/id/2/300/400'
+      } else {
+        return 'https://image.tmdb.org/t/p/w500' + result
+      }
     }
   },
   computed: {
@@ -75,9 +79,9 @@ main{
 }
 .p-relative{
     position: relative;
-    margin-left: 0.3rem;
-    margin-right: 0.3rem;
+    margin-right: 0.5rem;
 }
+
 .box-img{
     margin: 1rem;
     width: 300px;
