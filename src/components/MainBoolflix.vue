@@ -6,10 +6,9 @@
                 <div>Titolo originale: {{ element.original_title }}</div>
                 <!--<div>Language: {{ element.original_language }}</div>-->
                 <lang-flag :iso="element.original_language" :squared="false"/>
-                <div>Voto: {{ element.vote_average }}
-                  <span v-for='index in 5' :key='index'>
-                    <font-awesome-icon icon="fa-star starSolid"/>
-                  </span>
+                <div>
+                  <span> Voto: {{ element.vote_average }}</span>
+                    <font-awesome-icon v-for='index in 5' :key='index' icon="fa-star starSolid"/>
                 </div>
             </div>
             <div class="box-img">
@@ -45,6 +44,9 @@ export default {
       } else {
         return 'https://image.tmdb.org/t/p/w500' + result
       }
+    },
+    rating (media) {
+      return media * 0.5
     }
   },
   computed: {
@@ -52,7 +54,9 @@ export default {
       if (this.foundMovie === '' && this.foundTv === '') {
         return this.arrMovie === this.searchMovie && this.arrTv === this.scTv
       } else {
-        return this.searchMovie.filter(element => element.title.toLowerCase().includes(this.foundMovie.toLowerCase())) && this.scTv.filter(element => element.name.toLowerCase().includes(this.foundTv.toLowerCase()))
+        const result = this.searchMovie.filter(element => element.title.toLowerCase().includes(this.foundMovie.toLowerCase())).concat(this.scTv.filter(element => element.name.toLowerCase().includes(this.foundTv.toLowerCase())))
+        console.log(result)
+        return result
       }
     }
   }
