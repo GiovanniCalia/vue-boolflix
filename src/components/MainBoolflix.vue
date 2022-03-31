@@ -4,12 +4,14 @@
             <div class="box">
                 <div>Titolo: {{ element.title }}</div>
                 <div>Titolo originale: {{ element.original_title }}</div>
-                <!--<div>Language: {{ element.original_language }}</div>-->
-                <lang-flag :iso="element.original_language" :squared="false"/>
+                <div>Og language:
+                   <lang-flag :iso="element.original_language" :squared="false"/>
+                </div>
                 <div>
                   <span> Voto: {{ element.vote_average }}</span>
                     <font-awesome-icon v-for='index in 5' :key='index' icon="fa-star starSolid"/>
                 </div>
+                <div>Overview: {{ element.overview }}</div>
             </div>
             <div class="box-img">
                 <img :src="image(element.poster_path)" :alt="element.title">
@@ -51,11 +53,10 @@ export default {
   },
   computed: {
     filterTitle () {
-      if (this.foundMovie === '' && this.foundTv === '') {
+      if (this.foundMovie === ''.concat(this.foundTv === '')) {
         return this.arrMovie === this.searchMovie && this.arrTv === this.scTv
       } else {
         const result = this.searchMovie.filter(element => element.title.toLowerCase().includes(this.foundMovie.toLowerCase())).concat(this.scTv.filter(element => element.name.toLowerCase().includes(this.foundTv.toLowerCase())))
-        console.log(result)
         return result
       }
     }
@@ -77,7 +78,9 @@ main{
     padding: 1rem;
     width: 300px;
     height: 400px;
-    background-color: red;
+    background-color: black;
+    overflow-y: auto;
+
     div{
         margin-bottom: 0.5rem;
     }
