@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <header-boolflix @pass-movie='searchInput'/>
-    <main-boolflix :search-movie="movie" :sc-tv='tv' :found-movie="scMovie"/>
+    <main-boolflix :search-movie="movie" :sc-tv='tv' :found-movie="scMovie" :found-tv='scrTv'/>
   </div>
 </template>
 
@@ -19,7 +19,8 @@ export default {
     return {
       movie: [],
       tv: [],
-      scMovie: ''
+      scMovie: '',
+      scrTv: ''
     }
   },
   created () {
@@ -27,6 +28,7 @@ export default {
       'https://api.themoviedb.org/3/search/movie?api_key=58d440feb39fe720c632f6aaec3cb1f1&language=it&query=movie')
       .then((response) => {
         this.movie = response.data.results
+        console.log(this.movie)
       })
     axios.get(
       'https://api.themoviedb.org/3/search/tv?api_key=58d440feb39fe720c632f6aaec3cb1f1&language=it&query=tv')
@@ -42,6 +44,11 @@ export default {
         .then(() => {
           this.scMovie = search
           console.log(search)
+        })
+      axios.get(
+        'https://api.themoviedb.org/3/search/tv?api_key=58d440feb39fe720c632f6aaec3cb1f1&language=it&query=' + search)
+        .then(() => {
+          this.scrTV = search
         })
     }
   }

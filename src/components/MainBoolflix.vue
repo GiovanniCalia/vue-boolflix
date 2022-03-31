@@ -4,18 +4,24 @@
             <div class="box">
                 <div>Titolo: {{ element.title }}</div>
                 <div>Titolo originale: {{ element.original_title }}</div>
-                <div>Language: {{ element.original_language }}</div>
+                <!--<div>Language: {{ element.original_language }}</div>-->
+                <lang-flag :iso="element.original_language" :squared="false"/>
                 <div>Voto: {{ element.vote_average }}</div>
             </div>
             <div class="box-img">
-                <img :src="image(element.poster_path)" :alt="element.title">
+              <img :src="image(element.poster_path)" :alt="element.title">
             </div>
         </div>
   </main>
 </template>
 
 <script>
+import LangFlag from 'vue-lang-code-flags'
+
 export default {
+  components: {
+    LangFlag
+  },
   data () {
     return {
       arrMovie: [],
@@ -25,7 +31,8 @@ export default {
   props: {
     searchMovie: Array,
     scTv: Array,
-    foundMovie: String
+    foundMovie: String,
+    foundTv: String
   },
   methods: {
     image (result) {
@@ -34,10 +41,10 @@ export default {
   },
   computed: {
     filterTitle () {
-      if (this.foundMovie === '') {
+      if (this.foundMovie === '' && this.foundTv === '') {
         return this.arrMovie === this.searchMovie && this.arrTv === this.scTv
       } else {
-        return this.searchMovie.filter(element => element.title.toLowerCase().includes(this.foundMovie.toLowerCase())) && this.scTv.filter(element => element.name.toLowerCase().includes(this.foundMovie.toLowerCase()))
+        return this.searchMovie.filter(element => element.title.toLowerCase().includes(this.foundMovie.toLowerCase())) && this.scTv.filter(element => element.name.toLowerCase().includes(this.foundTv.toLowerCase()))
       }
     }
   }
